@@ -23,3 +23,8 @@
   border: 1px solid white;
   z-index: 1;
 }
+
+.gameScore {
+  position: absolute;
+  top: 615px;
+}

@@ -135,6 +135,7 @@ class App extends Component {
       <div className="gameArea">
         <Snake snakeDots={this.state.snakeDots} />
         <Food dot={this.state.food} />
+        <span className="gameScore">Score: {this.state.score}</span>
       </div>
     );
   }
