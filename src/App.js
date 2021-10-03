@@ -14,7 +14,7 @@ const getRandomCoordinates = () => {
 const initialState = {
   food: getRandomCoordinates(),
   score: 0,
-  speed: 200,
+  speed: 100,
   direction: 'RIGHT',
   snakeDots: [
     [0, 0], // [x, y]
@@ -40,17 +40,27 @@ class App extends Component {
     e = e || window.event;
     switch (e.keyCode) {
       case 38:
-        this.setState({direction: "UP"});
-        break
+        if (this.state.direction !== "DOWN") {
+          this.setState({direction: "UP"});
+          break;
+        }
       case 40:
-        this.setState({direction: 'DOWN'});
+        if (this.state.direction !== "UP") {
+          this.setState({direction: 'DOWN'});
+        } else {
+          this.setState({direction: 'UP'});
+        }
         break;
       case 37:
-        this.setState({direction: 'LEFT'});
-        break;
+        if (this.state.direction !== "RIGHT") {
+          this.setState({direction: "LEFT"});
+          break;
+        }
       case 39:
-        this.setState({direction: "RIGHT"});
-        break;
+        if (this.state.direction !== "LEFT") {
+          this.setState({direction: "RIGHT"});
+          break;
+        }
     }
   }
 
@@ -100,7 +110,7 @@ class App extends Component {
       if (head[0] == dot[0] && head[1] == dot[1]) {
         this.onGameOver();
       }
-    })
+    });
   }
 
 
